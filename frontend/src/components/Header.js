@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navbar, Nav, Container, Badge, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { UseSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
 import { useLogoutMutation } from "../slices/userApiSlice";
