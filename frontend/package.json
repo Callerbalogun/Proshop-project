@@ -1,8 +1,5 @@
 {
-  "homepage": "http://callerbalogun.github.io/proshop-project",
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
+  "name": "proshop",
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@paypal/react-paypal-js": "^8.1.3",
