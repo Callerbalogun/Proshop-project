@@ -178,7 +178,7 @@ const OrderScreen = () => {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {!order.isPaid && (
+              {!order.isPaid && !userInfo.isAdmin && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
                   {isPending ? (
