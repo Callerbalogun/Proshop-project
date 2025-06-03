@@ -28,15 +28,20 @@ function fileFilter(req, file, cb) {
     cb(new Error("Images only!"), false);
   }
 }
-const upload = multer({
-  storage,
-});
+const upload = multer({ storage, fileFilter });
+const uploadSingleImage = upload.single("image");
 
-router.post("/", upload.single("image"), (req, res) =>
-  res.send({
-    message: "Image Uploaded",
-    image: `/${req.file.path}`,
-  })
-);
+router.post("/", (req, res) => {
+  uploadSingleImage(req, res, function (err) {
+    if (err) {
+      res.status(400).send({ message: err.message });
+    }
+
+    res.status(200).send({
+      message: "Image uploaded successfully",
+      image: `/${req.file.path}`,
+    });
+  });
+});
 
 export default router;

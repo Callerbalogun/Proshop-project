@@ -56,7 +56,7 @@ const OrderScreen = () => {
   const onApprove = (data, actions) => {
     return actions.order.capture().then(async function (details) {
       try {
-        await payOrder({ orderId, details });
+        await payOrder({ orderId, details }).unwrap();
         refetch();
         toast.success("Payment successful");
       } catch (err) {
@@ -95,7 +95,7 @@ const OrderScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger" />
+    <Message variant="danger">{error?.data?.message || error.error}</Message>
   ) : (
     <>
       <h1>Order {order._id}</h1>
@@ -163,19 +163,19 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>{order.itemsPrice}</Col>
+                  <Col>${order.itemsPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>{order.shippingPrice}</Col>
+                  <Col>${order.shippingPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>{order.taxPrice}</Col>
+                  <Col>${order.taxPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Total</Col>
-                  <Col>{order.totalPrice}</Col>
+                  <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (

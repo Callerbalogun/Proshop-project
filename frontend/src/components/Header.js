@@ -6,6 +6,7 @@ import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
 import { useLogoutMutation } from "../slices/userApiSlice";
 import { logout } from "../slices/userSlices/authSlice";
+import { resetCart } from "../slices/cartSlice";
 import logo from "../assets/logo.png";
 import SearchBox from "./SearchBox";
 
@@ -20,6 +21,7 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispacth(logout());
+      dispacth(resetCart());
       navigate("/login");
     } catch (err) {
       console.log(err);
