@@ -30,14 +30,19 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
     getMyOrders: builder.query({
-      query: () => ({
+      query: ({ pageNumber }) => ({
         url: `${ORDERS_URL}/mine`,
+        params: { pageNumber },
       }),
       keepUnusedDataFor: 5,
     }),
     getAllOrders: builder.query({
-      query: () => ({
+      query: ({ keyword, pageNumber }) => ({
         url: ORDERS_URL,
+        params: {
+          keyword,
+          pageNumber,
+        },
       }),
       keepUnusedDataFor: 5,
     }),
