@@ -1,6 +1,6 @@
 # Proshop app
 
-A full Ecommerce app that user to make purchase using paypal.
+A full Ecommerce app that allows user to make purchase using paypal.
 
 ## Features
 
